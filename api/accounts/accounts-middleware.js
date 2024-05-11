@@ -46,12 +46,12 @@ exports.checkAccountId = async (req, res, next) => {
       next({
         status: 404, message: 'account not found',
       })
-    } else{
+    } else {
       req.account = account
       next()
     }
   } catch(err){
     next(err)
   }
-  next()
+  //next()
 }
