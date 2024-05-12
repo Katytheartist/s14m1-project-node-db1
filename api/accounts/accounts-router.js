@@ -23,12 +23,14 @@ try {
 })
 
 router.post('/', 
-md.checkAccountNameUnique, 
-md.checkAccountPayload, 
+md.checkAccountPayload,
+md.checkAccountNameUnique,  
 async (req, res, next) => {
   // DO YOUR MAGIC
 try {
-  const newAcct = await Account.create(req.body)
+  const newAcct = await Account.create({
+    name: req.body.name.trim(), 
+    budget: req.body.budget})
   res.status(201).json(newAcct)
 } catch(err) {
   next(err)
